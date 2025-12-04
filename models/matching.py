@@ -22,7 +22,7 @@ def global_correlation_softmax_3d(feature0, feature1, xyzs1, xyzs2,
 
     correspondence = torch.matmul(prob, grid_2).view(b, n, 3).permute(0, 2, 1)  # [B, 3, N]
 
-    # when predicting bidirectional flow, flow is the concatenation of forward flow and backward flow
+
     flow = correspondence - init_grid_1
 
     return flow, prob
@@ -84,3 +84,4 @@ class SelfCorrelationSoftmax3D(nn.Module):
         out = out.view(b, n, value.size(-1)).permute(0, 2, 1)  # [B, 3, N]
 
         return out
+
